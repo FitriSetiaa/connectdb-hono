@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <h1>HALLO WORLD</h1>
+    <div id="data-container"></div>
+
+
+    </div>
+    <script>
+        fetch('/data') // Melakukan permintaan GET ke endpoint /data
+            .then(response => response.json()) // Mengubah respons menjadi objek JSON
+            .then(data => {
+                const dataContainer = document.getElementById('data-container'); // Memilih elemen dengan id 'data-container'
+                data.forEach(item => { // Melooping setiap item dalam data
+                    const div = document.createElement('div'); // Membuat elemen <div> baru untuk setiap item
+                    // Menetapkan teks konten untuk div dengan data dari setiap item
+                    div.textContent = `Id: ${item.id}, nik: ${item.nik}, nama: ${item.nama}, tempat_lahir: ${item.tempat_lahir}, tanggal_lahir: ${item.tanggal_lahir}`;
+                    dataContainer.appendChild(div); // Menambahkan elemen <div> ke dalam dataContainer
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error); // Menangani kesalahan jika permintaan gagal
+            });
+    </script>
+</body>
+</html>
