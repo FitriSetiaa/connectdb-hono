@@ -1,4 +1,4 @@
-import * as mysql from 'mysql';
+import * as mysql from 'mysql'; //untuk mengimport modul yang berinteraksi dengan database
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server';
 
